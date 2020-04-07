@@ -1,95 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { MdAddShoppingCart } from 'react-icons/md';
 
 import { ProductList } from './styles';
-import shoes from '../../assets/images/shoes.jpg';
+import api from '../../services/api';
+import { formatPrice } from '../../util/format';
 
-export default function Home() {
-  return (
-    <ProductList>
-      <li>
-        <img src={shoes} alt="Tênis" />
-        <strong>Running shoes</strong>
-        <span>$39.00</span>
+export default class Home extends Component {
+  state = {
+    products: [],
+  };
 
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#fff" /> 3
-          </div>
+  async componentDidMount() {
+    const response = await api.get('products');
 
-          <span>ADD TO CART</span>
-        </button>
-      </li>
+    const data = response.data.map((product) => ({
+      ...product,
+      formattedPrice: formatPrice(product.price),
+    }));
+    this.setState({ products: data });
+  }
 
-      <li>
-        <img src={shoes} alt="Tênis" />
-        <strong>Running shoes</strong>
-        <span>$39.00</span>
+  render() {
+    const { products } = this.state;
+    return (
+      <ProductList>
+        {products.map((product) => (
+          <li key={String(product.id)}>
+            <img src={product.image} alt={product.title} />
+            <strong>{product.title}</strong>
+            <span>{product.formattedPrice}</span>
 
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#fff" /> 3
-          </div>
+            <button type="button">
+              <div>
+                <MdAddShoppingCart size={16} color="#fff" /> 3
+              </div>
 
-          <span>ADD TO CART</span>
-        </button>
-      </li>
-
-      <li>
-        <img src={shoes} alt="Tênis" />
-        <strong>Running shoes</strong>
-        <span>$39.00</span>
-
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#fff" /> 3
-          </div>
-
-          <span>ADD TO CART</span>
-        </button>
-      </li>
-
-      <li>
-        <img src={shoes} alt="Tênis" />
-        <strong>Running shoes</strong>
-        <span>$39.00</span>
-
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#fff" /> 3
-          </div>
-
-          <span>ADD TO CART</span>
-        </button>
-      </li>
-
-      <li>
-        <img src={shoes} alt="Tênis" />
-        <strong>Running shoes</strong>
-        <span>$39.00</span>
-
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#fff" /> 3
-          </div>
-
-          <span>ADD TO CART</span>
-        </button>
-      </li>
-
-      <li>
-        <img src={shoes} alt="Tênis" />
-        <strong>Running shoes</strong>
-        <span>$39.00</span>
-
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#fff" /> 3
-          </div>
-
-          <span>ADD TO CART</span>
-        </button>
-      </li>
-    </ProductList>
-  );
+              <span>ADD TO CART</span>
+            </button>
+          </li>
+        ))}
+      </ProductList>
+    );
+  }
 }
