@@ -6,6 +6,7 @@ import {
   MdAddCircleOutline,
   MdDelete,
 } from 'react-icons/md';
+import PropTypes from 'prop-types';
 
 import { Container, ProductTable, Total } from './styles';
 import * as CartActions from '../../store/modules/cart/actions';
@@ -102,6 +103,22 @@ const mapStateToProps = (state) => ({
     }, 0)
   ),
 });
+
+Cart.propTypes = {
+  cart: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      price: PropTypes.number,
+      image: PropTypes.string,
+      amount: PropTypes.number,
+      formattedPrice: PropTypes.string,
+    })
+  ).isRequired,
+  total: PropTypes.string.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
+  updateAmountRequest: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(CartActions, dispatch);
