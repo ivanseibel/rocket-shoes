@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, Button } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {
@@ -10,6 +10,10 @@ import {
   ProductPrice,
   AddButton,
   AddText,
+  TotalInCart,
+  CartBox,
+  LabelButtonBox,
+  FooterBox,
 } from './styles';
 
 export default class Home extends Component {
@@ -41,21 +45,32 @@ export default class Home extends Component {
 
   render() {
     const { products } = this.state;
+    const { navigation } = this.props;
+
+    console.tron.log(navigation);
     return (
       <Container>
         <FlatList
           horizontal
           data={products}
           keyExtractor={(item) => String(item.id)}
+          showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => (
             <ProductBox>
               <ProductImg source={{ uri: item.image }} />
               <ProductTitle>{item.title}</ProductTitle>
-              <ProductPrice>{item.price}</ProductPrice>
-              <AddButton>
-                <Icon name="add-shopping-cart" />
-                <AddText>ADD TO CART</AddText>
-              </AddButton>
+              <FooterBox>
+                <ProductPrice>{item.price}</ProductPrice>
+                <AddButton>
+                  <CartBox>
+                    <Icon name="add-shopping-cart" color="#fff" size={20} />
+                    <TotalInCart>{3}</TotalInCart>
+                  </CartBox>
+                  <LabelButtonBox>
+                    <AddText>ADD TO CART</AddText>
+                  </LabelButtonBox>
+                </AddButton>
+              </FooterBox>
             </ProductBox>
           )}
         />

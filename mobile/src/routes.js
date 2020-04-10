@@ -13,13 +13,10 @@ function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        // screenOptions={{
-        //   header: () => <Header />,
-        // }}
         screenOptions={() => {
           return {
             header: (props) => {
-              return <Header navigation={props} />;
+              return <Header data={props} />;
             },
           };
         }}
@@ -31,7 +28,13 @@ function Routes() {
             cardStyle: { backgroundColor: '#141419' },
           }}
         />
-        <Stack.Screen name="Cart" component={Cart} />
+        <Stack.Screen
+          name="Cart"
+          component={Cart}
+          options={{
+            cardStyle: { backgroundColor: '#141419' },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -17,6 +17,11 @@ export const Container = styled.View`
   background: #141419;
 `;
 
+export const LogoButton = styled.TouchableOpacity`
+  height: 24px;
+  width: 185px;
+`;
+
 export const Logo = styled.Image.attrs({
   source: logo,
   resizeMode: 'cover',
@@ -28,22 +33,22 @@ export const Logo = styled.Image.attrs({
 export const BasketContainer = styled.TouchableOpacity`
   height: 24px;
   width: 24px;
-  flex: 1;
-  align-items: flex-end;
-  justify-content: flex-end;
+  /* flex: 1; */
+  /* align-items: flex-end;
+  justify-content: flex-end; */
 `;
 
 export const ItemCount = styled.Text`
   position: absolute;
   text-align: center;
-  top: -8px;
-  right: -8px;
-  width: 18px;
-  height: 18px;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
   background: #7159c1;
   color: #fff;
-  font-size: 12px;
-  padding: 1px 0;
-  border-radius: 9px;
+  font-size: 11px;
+  padding: 2px;
+  border-radius: 10px;
   overflow: hidden;
 `;
