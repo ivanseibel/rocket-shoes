@@ -13,11 +13,24 @@ function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        screenOptions={{
-          title: <Header />,
+        // screenOptions={{
+        //   header: () => <Header />,
+        // }}
+        screenOptions={() => {
+          return {
+            header: (props) => {
+              return <Header navigation={props} />;
+            },
+          };
         }}
       >
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{
+            cardStyle: { backgroundColor: '#141419' },
+          }}
+        />
         <Stack.Screen name="Cart" component={Cart} />
       </Stack.Navigator>
     </NavigationContainer>
