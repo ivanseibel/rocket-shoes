@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FlatList } from 'react-native';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import {
@@ -22,15 +23,9 @@ import {
   CheckoutButtonLabel,
   ImageBox,
 } from './styles';
+import * as CartActions from '../../store/modules/cart/actions';
 
-function Cart({ cart, dispatch }) {
-  const handleRemoveFromCart = (id) => {
-    dispatch({
-      type: 'REMOVE_FROM_CART',
-      id,
-    });
-  };
-
+function Cart({ cart, removeFromCart }) {
   return (
     <Container>
       <FlatList
@@ -49,7 +44,7 @@ function Cart({ cart, dispatch }) {
               </DescriptionBox>
               <DeleteIconBox
                 onPress={() => {
-                  handleRemoveFromCart(product.id);
+                  removeFromCart(product.id);
                 }}
               >
                 <Icon name="delete-forever" size={25} color="#7159c1" />
@@ -81,4 +76,7 @@ const mapStateToProps = (state) => ({
   cart: state.cart,
 });
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(CartActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
