@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FlatList } from 'react-native';
+import { connect } from 'react-redux';
 
 import {
   Container,
@@ -23,15 +24,10 @@ import {
 } from './styles';
 
 function Cart({ cart }) {
-  state = {
-    products: [],
-  };
-
-  const { products } = this.state;
   return (
     <Container>
       <FlatList
-        data={products}
+        data={cart}
         keyExtractor={(item) => String(item.id)}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => (
