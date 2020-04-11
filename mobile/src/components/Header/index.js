@@ -4,7 +4,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   Container,
   Logo,
-  Wrapper,
   BasketContainer,
   ItemCount,
   LogoButton,

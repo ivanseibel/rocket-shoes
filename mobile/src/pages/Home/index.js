@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { FlatList, Button } from 'react-native';
+import { FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import api from '../../services/api';
+import { formatPrice } from '../../util/format';
 import {
   Container,
   ProductBox,
@@ -18,30 +20,21 @@ import {
 
 export default class Home extends Component {
   state = {
-    products: [
-      {
-        id: 1,
-        title: 'Tênis de Caminhada Leve Confortável',
-        price: 179.9,
-        image:
-          'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis1.jpg',
-      },
-      {
-        id: 2,
-        title: 'Tênis VR Caminhada Confortável Detalhes Couro Masculino',
-        price: 139.9,
-        image:
-          'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis2.jpg',
-      },
-      {
-        id: 3,
-        title: 'Tênis Adidas Duramo Lite 2.0',
-        price: 219.9,
-        image:
-          'https://rocketseat-cdn.s3-sa-east-1.amazonaws.com/modulo-redux/tenis3.jpg',
-      },
-    ],
+    products: [],
   };
+
+  async componentDidMount() {
+    const response = await api.get('/products');
+
+    const data = response.data.map((product) => {
+      product.formattedPrice = formatPrice(product.price);
+      return product;
+    });
+
+    if (response) {
+      this.setState({ products: [...data] });
+    }
+  }
 
   render() {
     const { products } = this.state;
@@ -60,7 +53,7 @@ export default class Home extends Component {
               <ProductImg source={{ uri: item.image }} />
               <ProductTitle>{item.title}</ProductTitle>
               <FooterBox>
-                <ProductPrice>{item.price}</ProductPrice>
+                <ProductPrice>{item.formattedPrice}</ProductPrice>
                 <AddButton>
                   <CartBox>
                     <Icon name="add-shopping-cart" color="#fff" size={20} />
