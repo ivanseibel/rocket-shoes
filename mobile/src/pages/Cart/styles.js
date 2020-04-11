@@ -37,8 +37,9 @@ export const ProductPrice = styled.Text`
   margin-bottom: auto;
 `;
 
-export const DeleteIconBox = styled.View`
-  /*  */
+export const DeleteIconBox = styled.TouchableOpacity`
+  width: 25px;
+  height: 25px;
 `;
 
 export const SubTotalBox = styled.View`
@@ -59,7 +60,7 @@ export const AmountBox = styled.View`
 `;
 
 export const ProductAmount = styled.TextInput.attrs({
-  readonly: true,
+  editable: false,
 })`
   background: #fff;
   color: #666;
