@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { FlatList } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -25,7 +25,15 @@ import {
 } from './styles';
 import * as CartActions from '../../store/modules/cart/actions';
 
-function Cart({ cart, removeFromCart }) {
+function Cart({ cart, removeFromCart, updateAmount }) {
+  const incrementAmount = (product) => {
+    updateAmount(product.id, product.amount + 1);
+  };
+
+  const decrementAmount = (product) => {
+    updateAmount(product.id, product.amount - 1);
+  };
+
   return (
     <Container>
       <FlatList
@@ -52,9 +60,25 @@ function Cart({ cart, removeFromCart }) {
             </ItemBox>
             <SubTotalBox>
               <AmountBox>
-                <Icon name="remove-circle-outline" size={20} color="#7159c1" />
+                <TouchableOpacity
+                  onPress={() => {
+                    decrementAmount(product);
+                  }}
+                >
+                  <Icon
+                    name="remove-circle-outline"
+                    size={20}
+                    color="#7159c1"
+                  />
+                </TouchableOpacity>
                 <ProductAmount value={String(product.amount)} />
-                <Icon name="add-circle-outline" size={20} color="#7159c1" />
+                <TouchableOpacity
+                  onPress={() => {
+                    incrementAmount(product);
+                  }}
+                >
+                  <Icon name="add-circle-outline" size={20} color="#7159c1" />
+                </TouchableOpacity>
               </AmountBox>
               <PriceBox>{product.price}</PriceBox>
             </SubTotalBox>
