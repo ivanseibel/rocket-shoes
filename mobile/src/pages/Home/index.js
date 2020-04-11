@@ -39,10 +39,10 @@ class Home extends Component {
     }
   }
 
-  handleAddProduct = (product) => {
-    const { addToCart } = this.props;
+  handleAddProduct = (id) => {
+    const { addToCartRequest } = this.props;
 
-    addToCart(product);
+    addToCartRequest(id);
   };
 
   render() {
@@ -64,7 +64,7 @@ class Home extends Component {
                 <ProductPrice>{product.formattedPrice}</ProductPrice>
                 <AddButton
                   onPress={() => {
-                    this.handleAddProduct(product);
+                    this.handleAddProduct(product.id);
                   }}
                 >
                   <CartBox>
