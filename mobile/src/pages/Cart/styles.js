@@ -7,6 +7,10 @@ export const Container = styled.View`
   border-radius: 4px;
 `;
 
+export const CartItem = styled.View`
+  flex: 1;
+`;
+
 export const ItemBox = styled.View`
   flex-direction: row;
   align-items: center;
