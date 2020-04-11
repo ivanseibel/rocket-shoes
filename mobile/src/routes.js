@@ -16,7 +16,8 @@ function Routes() {
         screenOptions={() => {
           return {
             header: (props) => {
-              return <Header data={props} />;
+              // return <Header />;
+              return <Header data={props} state={{}} />;
             },
           };
         }}
