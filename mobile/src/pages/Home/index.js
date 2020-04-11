@@ -56,22 +56,22 @@ class Home extends Component {
         <FlatList
           horizontal
           data={products}
-          keyExtractor={(item) => String(item.id)}
+          keyExtractor={(product) => String(product.id)}
           showsHorizontalScrollIndicator={false}
-          renderItem={({ item }) => (
+          renderItem={({ item: product }) => (
             <ProductBox>
-              <ProductImg source={{ uri: item.image }} />
-              <ProductTitle>{item.title}</ProductTitle>
+              <ProductImg source={{ uri: product.image }} />
+              <ProductTitle>{product.title}</ProductTitle>
               <FooterBox>
-                <ProductPrice>{item.formattedPrice}</ProductPrice>
+                <ProductPrice>{product.formattedPrice}</ProductPrice>
                 <AddButton
                   onPress={() => {
-                    this.handleAddProduct(item);
+                    this.handleAddProduct(product);
                   }}
                 >
                   <CartBox>
                     <Icon name="add-shopping-cart" color="#fff" size={20} />
-                    <TotalInCart>{3}</TotalInCart>
+                    <TotalInCart>{product.amount || 0}</TotalInCart>
                   </CartBox>
                   <LabelButtonBox>
                     <AddText>ADD TO CART</AddText>
