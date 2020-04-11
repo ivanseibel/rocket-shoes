@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { FlatList, TouchableOpacity } from 'react-native';
+import { FlatList, TouchableOpacity, View } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { formatPrice } from '../../util/format';
 import {
+  CartItem,
   Container,
   ItemBox,
   ProductImage,
@@ -39,21 +40,21 @@ function Cart({ cart, total, removeFromCart, updateAmount }) {
     <Container>
       <FlatList
         data={cart}
-        keyExtractor={(product) => String(product.id)}
+        keyExtractor={(product) => product.id.toString()}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item: product }) => (
-          <>
+        renderItem={({ item }) => (
+          <CartItem>
             <ItemBox>
               <ImageBox>
-                <ProductImage source={{ uri: product.image }} />
+                <ProductImage source={{ uri: item.image }} />
               </ImageBox>
               <DescriptionBox>
-                <ProductTitle>{product.title}</ProductTitle>
-                <ProductPrice>{product.formattedPrice}</ProductPrice>
+                <ProductTitle>{item.title}</ProductTitle>
+                <ProductPrice>{item.formattedPrice}</ProductPrice>
               </DescriptionBox>
               <DeleteIconBox
                 onPress={() => {
-                  removeFromCart(product.id);
+                  removeFromCart(item.id);
                 }}
               >
                 <Icon name="delete-forever" size={25} color="#7159c1" />
@@ -63,7 +64,7 @@ function Cart({ cart, total, removeFromCart, updateAmount }) {
               <AmountBox>
                 <TouchableOpacity
                   onPress={() => {
-                    decrementAmount(product);
+                    decrementAmount(item);
                   }}
                 >
                   <Icon
@@ -72,18 +73,18 @@ function Cart({ cart, total, removeFromCart, updateAmount }) {
                     color="#7159c1"
                   />
                 </TouchableOpacity>
-                <ProductAmount value={String(product.amount)} />
+                <ProductAmount value={String(item.amount)} />
                 <TouchableOpacity
                   onPress={() => {
-                    incrementAmount(product);
+                    incrementAmount(item);
                   }}
                 >
                   <Icon name="add-circle-outline" size={20} color="#7159c1" />
                 </TouchableOpacity>
               </AmountBox>
-              <PriceBox>{product.subtotal}</PriceBox>
+              <PriceBox>{item.subtotal}</PriceBox>
             </SubTotalBox>
-          </>
+          </CartItem>
         )}
       />
       <FooterCart>
