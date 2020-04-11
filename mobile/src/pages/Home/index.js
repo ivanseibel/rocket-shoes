@@ -47,9 +47,8 @@ class Home extends Component {
 
   render() {
     const { products } = this.state;
-    const { navigation } = this.props;
+    const { amount } = this.props;
 
-    console.tron.log(navigation);
     return (
       <Container>
         <FlatList
@@ -70,7 +69,7 @@ class Home extends Component {
                 >
                   <CartBox>
                     <Icon name="add-shopping-cart" color="#fff" size={20} />
-                    <TotalInCart>{product.amount || 0}</TotalInCart>
+                    <TotalInCart>{amount[product.id] || 0}</TotalInCart>
                   </CartBox>
                   <LabelButtonBox>
                     <AddText>ADD TO CART</AddText>
@@ -85,9 +84,14 @@ class Home extends Component {
   }
 }
 
-// Send CartActions to props
+const mapStateToProps = (state) => ({
+  amount: state.cart.reduce((amount, product) => {
+    amount[product.id] = product.amount;
+    return amount;
+  }, {}),
+});
+
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(CartActions, dispatch);
 
-// First parameter is null because there is no mapStateToProps
-export default connect(null, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
