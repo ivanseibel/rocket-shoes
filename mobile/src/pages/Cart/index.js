@@ -23,34 +23,45 @@ import {
   ImageBox,
 } from './styles';
 
-function Cart({ cart }) {
+function Cart({ cart, dispatch }) {
+  const handleRemoveFromCart = (id) => {
+    dispatch({
+      type: 'REMOVE_FROM_CART',
+      id,
+    });
+  };
+
   return (
     <Container>
       <FlatList
         data={cart}
-        keyExtractor={(item) => String(item.id)}
+        keyExtractor={(product) => String(product.id)}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
+        renderItem={({ item: product }) => (
           <>
             <ItemBox>
               <ImageBox>
-                <ProductImage source={{ uri: item.image }} />
+                <ProductImage source={{ uri: product.image }} />
               </ImageBox>
               <DescriptionBox>
-                <ProductTitle>{item.title}</ProductTitle>
-                <ProductPrice>{item.price}</ProductPrice>
+                <ProductTitle>{product.title}</ProductTitle>
+                <ProductPrice>{product.price}</ProductPrice>
               </DescriptionBox>
-              <DeleteIconBox>
+              <DeleteIconBox
+                onPress={() => {
+                  handleRemoveFromCart(product.id);
+                }}
+              >
                 <Icon name="delete-forever" size={25} color="#7159c1" />
               </DeleteIconBox>
             </ItemBox>
             <SubTotalBox>
               <AmountBox>
                 <Icon name="remove-circle-outline" size={20} color="#7159c1" />
-                <ProductAmount value={String(3)} />
+                <ProductAmount value={String(product.amount)} />
                 <Icon name="add-circle-outline" size={20} color="#7159c1" />
               </AmountBox>
-              <PriceBox>{item.price}</PriceBox>
+              <PriceBox>{product.price}</PriceBox>
             </SubTotalBox>
           </>
         )}
