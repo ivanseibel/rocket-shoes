@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { FlatList, TouchableOpacity, View } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -24,6 +24,8 @@ import {
   CheckoutButton,
   CheckoutButtonLabel,
   ImageBox,
+  EmptyCartBox,
+  EmptyCartText,
 } from './styles';
 import * as CartActions from '../../store/modules/cart/actions';
 
@@ -37,64 +39,72 @@ function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
   };
 
   return (
-    <Container>
-      <FlatList
-        data={cart}
-        keyExtractor={(product) => product.id.toString()}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <CartItem>
-            <ItemBox>
-              <ImageBox>
-                <ProductImage source={{ uri: item.image }} />
-              </ImageBox>
-              <DescriptionBox>
-                <ProductTitle>{item.title}</ProductTitle>
-                <ProductPrice>{item.formattedPrice}</ProductPrice>
-              </DescriptionBox>
-              <DeleteIconBox
-                onPress={() => {
-                  removeFromCart(item.id);
-                }}
-              >
-                <Icon name="delete-forever" size={25} color="#7159c1" />
-              </DeleteIconBox>
-            </ItemBox>
-            <SubTotalBox>
-              <AmountBox>
-                <TouchableOpacity
+    <>
+      <Container hide={cart.length > 0}>
+        <EmptyCartBox>
+          <Icon name="remove-shopping-cart" size={40} color="#ddd" />
+          <EmptyCartText>Your cart is empty</EmptyCartText>
+        </EmptyCartBox>
+      </Container>
+      <Container hide={cart.length === 0}>
+        <FlatList
+          data={cart}
+          keyExtractor={(product) => product.id.toString()}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <CartItem>
+              <ItemBox>
+                <ImageBox>
+                  <ProductImage source={{ uri: item.image }} />
+                </ImageBox>
+                <DescriptionBox>
+                  <ProductTitle>{item.title}</ProductTitle>
+                  <ProductPrice>{item.formattedPrice}</ProductPrice>
+                </DescriptionBox>
+                <DeleteIconBox
                   onPress={() => {
-                    decrementAmount(item);
+                    removeFromCart(item.id);
                   }}
                 >
-                  <Icon
-                    name="remove-circle-outline"
-                    size={20}
-                    color="#7159c1"
-                  />
-                </TouchableOpacity>
-                <ProductAmount value={String(item.amount)} />
-                <TouchableOpacity
-                  onPress={() => {
-                    incrementAmount(item);
-                  }}
-                >
-                  <Icon name="add-circle-outline" size={20} color="#7159c1" />
-                </TouchableOpacity>
-              </AmountBox>
-              <PriceBox>{item.subtotal}</PriceBox>
-            </SubTotalBox>
-          </CartItem>
-        )}
-      />
-      <FooterCart>
-        <TotalLabel>TOTAL</TotalLabel>
-        <TotalValue>{total}</TotalValue>
-      </FooterCart>
-      <CheckoutButton>
-        <CheckoutButtonLabel>CHECKOUT</CheckoutButtonLabel>
-      </CheckoutButton>
-    </Container>
+                  <Icon name="delete-forever" size={25} color="#7159c1" />
+                </DeleteIconBox>
+              </ItemBox>
+              <SubTotalBox>
+                <AmountBox>
+                  <TouchableOpacity
+                    onPress={() => {
+                      decrementAmount(item);
+                    }}
+                  >
+                    <Icon
+                      name="remove-circle-outline"
+                      size={20}
+                      color="#7159c1"
+                    />
+                  </TouchableOpacity>
+                  <ProductAmount value={String(item.amount)} />
+                  <TouchableOpacity
+                    onPress={() => {
+                      incrementAmount(item);
+                    }}
+                  >
+                    <Icon name="add-circle-outline" size={20} color="#7159c1" />
+                  </TouchableOpacity>
+                </AmountBox>
+                <PriceBox>{item.subtotal}</PriceBox>
+              </SubTotalBox>
+            </CartItem>
+          )}
+        />
+        <FooterCart>
+          <TotalLabel>TOTAL</TotalLabel>
+          <TotalValue>{total}</TotalValue>
+        </FooterCart>
+        <CheckoutButton>
+          <CheckoutButtonLabel>CHECKOUT</CheckoutButtonLabel>
+        </CheckoutButton>
+      </Container>
+    </>
   );
 }
 

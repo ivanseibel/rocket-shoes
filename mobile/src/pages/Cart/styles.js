@@ -5,6 +5,18 @@ export const Container = styled.View`
   background: #fff;
   padding: 15px;
   border-radius: 4px;
+  display: ${(props) => (props.hide ? 'none' : 'flex')};
+`;
+
+export const EmptyCartBox = styled.View`
+  align-items: center;
+  background: #fff;
+`;
+
+export const EmptyCartText = styled.Text`
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 18px;
 `;
 
 export const CartItem = styled.View`
