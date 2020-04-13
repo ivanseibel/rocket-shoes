@@ -3,6 +3,7 @@ import { FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 
 import * as CartActions from '../../store/modules/cart/actions';
 import api from '../../services/api';
@@ -83,6 +84,11 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  addToCartRequest: PropTypes.func.isRequired,
+  amount: PropTypes.shape().isRequired,
+};
 
 const mapStateToProps = (state) => ({
   amount: state.cart.reduce((amount, product) => {
