@@ -6,6 +6,8 @@ export const Container = styled.div`
   background: #fff;
   border-radius: 4px;
 
+  display: ${(props) => (props.hide ? 'none' : 'block')};
+
   footer {
     margin-top: 30px;
     display: flex;
@@ -26,6 +28,19 @@ export const Container = styled.div`
         background: ${darken(0.03, '#7159c1')};
       }
     }
+  }
+`;
+
+export const EmptyCartBox = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  strong {
+    margin-top: 25px;
+    font-size: 25px;
   }
 `;
 
