@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 
 import * as CartActions from '../../store/modules/cart/actions';
 import api from '../../services/api';
@@ -22,8 +20,15 @@ import {
   FooterBox,
 } from './styles';
 
-function Home({ amount, addToCartRequest }) {
+export default function Home() {
   const [products, setProducts] = useState([]);
+
+  const amount = useSelector((state) =>
+    state.cart.reduce((amountSum, product) => {
+      amountSum[product.id] = product.amount;
+      return amountSum;
+    }, {})
+  );
 
   useEffect(() => {
     async function loadProducts() {
@@ -42,8 +47,10 @@ function Home({ amount, addToCartRequest }) {
     loadProducts();
   }, []);
 
+  const dispatch = useDispatch();
+
   function handleAddProduct(id) {
-    addToCartRequest(id);
+    dispatch(CartActions.addToCartRequest(id));
   }
 
   return (
@@ -79,20 +86,3 @@ function Home({ amount, addToCartRequest }) {
     </Container>
   );
 }
-
-Home.propTypes = {
-  addToCartRequest: PropTypes.func.isRequired,
-  amount: PropTypes.shape().isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  amount: state.cart.reduce((amount, product) => {
-    amount[product.id] = product.amount;
-    return amount;
-  }, {}),
-});
-
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(CartActions, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
