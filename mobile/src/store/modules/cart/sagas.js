@@ -1,12 +1,12 @@
-import { Alert } from 'react-native';
 import { call, put, all, takeLatest, select } from 'redux-saga/effects';
 import { showMessage } from 'react-native-flash-message';
 
 import api from '../../../services/api';
 import { addToCartSuccess, updateAmountSuccess } from './actions';
 import { formatPrice } from '../../../util/format';
+import * as Navigation from '../../../services/navigation';
 
-function* addToCart({ id }) {
+function* addToCart({ id, navigate }) {
   const productExists = yield select((state) =>
     state.cart.find((p) => p.id === id)
   );
@@ -38,6 +38,7 @@ function* addToCart({ id }) {
     };
 
     yield put(addToCartSuccess(data));
+    Navigation.navigate('Cart');
   }
 }
 
