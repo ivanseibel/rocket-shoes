@@ -1,17 +1,18 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, TransitionSpecs } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Header from './components/Header';
+import { navigationRef } from './services/navigation';
 
 const Stack = createStackNavigator();
 
 function Routes() {
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         screenOptions={() => {
           return {
