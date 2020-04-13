@@ -1,7 +1,10 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 
 import Home from './pages/Home';
 import Cart from './pages/Cart';
@@ -20,6 +23,7 @@ function Routes() {
               // return <Header />;
               return <Header data={props} state={{}} />;
             },
+            ...TransitionPresets.SlideFromRightIOS,
           };
         }}
       >
