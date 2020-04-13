@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { FlatList, TouchableOpacity } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { formatPrice } from '../../util/format';
 import {
@@ -107,6 +108,13 @@ function Cart({ cart, total, removeFromCart, updateAmountRequest }) {
     </>
   );
 }
+
+Cart.propTypes = {
+  cart: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  total: PropTypes.string.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
+  updateAmountRequest: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   cart: state.cart.map((product) => ({
