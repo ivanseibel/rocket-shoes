@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlatList } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { connect } from 'react-redux';
@@ -22,67 +22,62 @@ import {
   FooterBox,
 } from './styles';
 
-class Home extends Component {
-  state = {
-    products: [],
-  };
+function Home({ amount, addToCartRequest }) {
+  const [products, setProducts] = useState([]);
 
-  async componentDidMount() {
-    const response = await api.get('/products');
+  useEffect(() => {
+    async function loadProducts() {
+      const response = await api.get('/products');
 
-    const data = response.data.map((product) => {
-      product.formattedPrice = formatPrice(product.price);
-      return product;
-    });
+      const data = response.data.map((product) => {
+        product.formattedPrice = formatPrice(product.price);
+        return product;
+      });
 
-    if (response) {
-      this.setState({ products: [...data] });
+      if (response) {
+        setProducts([...data]);
+      }
     }
-  }
 
-  handleAddProduct = (id) => {
-    const { addToCartRequest } = this.props;
+    loadProducts();
+  }, []);
 
+  function handleAddProduct(id) {
     addToCartRequest(id);
-  };
-
-  render() {
-    const { products } = this.state;
-    const { amount } = this.props;
-
-    return (
-      <Container>
-        <FlatList
-          horizontal
-          data={products}
-          keyExtractor={(product) => String(product.id)}
-          showsHorizontalScrollIndicator={false}
-          renderItem={({ item: product }) => (
-            <ProductBox>
-              <ProductImg source={{ uri: product.image }} />
-              <ProductTitle>{product.title}</ProductTitle>
-              <FooterBox>
-                <ProductPrice>{product.formattedPrice}</ProductPrice>
-                <AddButton
-                  onPress={() => {
-                    this.handleAddProduct(product.id);
-                  }}
-                >
-                  <CartBox>
-                    <Icon name="add-shopping-cart" color="#fff" size={20} />
-                    <TotalInCart>{amount[product.id] || 0}</TotalInCart>
-                  </CartBox>
-                  <LabelButtonBox>
-                    <AddText>ADD TO CART</AddText>
-                  </LabelButtonBox>
-                </AddButton>
-              </FooterBox>
-            </ProductBox>
-          )}
-        />
-      </Container>
-    );
   }
+
+  return (
+    <Container>
+      <FlatList
+        horizontal
+        data={products}
+        keyExtractor={(product) => String(product.id)}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item: product }) => (
+          <ProductBox>
+            <ProductImg source={{ uri: product.image }} />
+            <ProductTitle>{product.title}</ProductTitle>
+            <FooterBox>
+              <ProductPrice>{product.formattedPrice}</ProductPrice>
+              <AddButton
+                onPress={() => {
+                  handleAddProduct(product.id);
+                }}
+              >
+                <CartBox>
+                  <Icon name="add-shopping-cart" color="#fff" size={20} />
+                  <TotalInCart>{amount[product.id] || 0}</TotalInCart>
+                </CartBox>
+                <LabelButtonBox>
+                  <AddText>ADD TO CART</AddText>
+                </LabelButtonBox>
+              </AddButton>
+            </FooterBox>
+          </ProductBox>
+        )}
+      />
+    </Container>
+  );
 }
 
 Home.propTypes = {
