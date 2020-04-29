@@ -58,13 +58,13 @@ Implemented through json-server library to simulate a real REST API.
 
 # Web application
 
-Two-screen web front-end written with ReactJS.
+Web front-end written with ReactJS.
 
 [See more information](https://github.com/ivanseibel/rocketshoes/tree/master/web).
 
 # Mobile application
 
-Two-screen mobile front-end written with React Native.
+Mobile front-end written with React Native.
 
 [See more information](https://github.com/ivanseibel/rocketshoes/tree/master/mobile).
 
