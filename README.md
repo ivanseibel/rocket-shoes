@@ -33,7 +33,7 @@
 
 # Description
 
-This project is one of several builded during GoStack Bootcamp offered by [Rocketseat](http://rocketseat.com.br).
+This project is one of several builded during GoStack Bootcamp offered by [Rocketseat](http://rocketseat.com.br) and consists in a very simple 2 screens apps that simulating a real web store of shoes.
 
 ## Objectives
 

@@ -28,7 +28,7 @@
 
 # Description
 
-The json-server library was chosen to simulate a real api to provide queries of details and products stock. This library provides a full REST api with very usefull personalizations and its database is totally based in a simple json file.
+The [json-server](https://github.com/typicode/json-server) library was chosen to simulate a real api to provide queries of details and products stock. This library provides a full REST api with very usefull personalizations and its database is totally based in a simple json file.
 
 # Hot to run
 
