@@ -52,9 +52,13 @@ Throughout this project, follow concepts and technologies was reviewed:
 
 # Back-end
 
+Implemented through json-server library to simulate a real REST API.
+
 [See more information](https://github.com/ivanseibel/rocketshoes/tree/master/api).
 
 # Web application
+
+Web front-end wrotte with ReactJS 
 
 [See more information](https://github.com/ivanseibel/rocketshoes/tree/master/web).
 
