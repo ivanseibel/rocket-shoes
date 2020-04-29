@@ -27,7 +27,12 @@
   <a href="#license">License</a>
 </p>
 
-<img align="center" src="https://github.com/ivanseibel/assets/blob/master/img/rocketshoes/rocketshoes-mobile-demo.gif?raw=true" alt="Rocketshoes Mobile App Demo">
+<p align="center">
+<img src="https://github.com/ivanseibel/assets/blob/master/img/rocketshoes/rocketshoes-mobile-demo.gif?raw=true" alt="Rocketshoes Mobile App Demo"
+style="width: 300px;"
+>
+</p>
+
 
 # Description
 
