@@ -25,9 +25,9 @@
 
 <p align="center">
   <a href="#description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#bac-kend">Back-end</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#web">Web Application</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#mobile">Mobile Application</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#back-end">Back-end</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#web-application">Web Application</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#mobile-application">Mobile Application</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#license">License</a>
 </p>
 
@@ -52,5 +52,17 @@ Throughout this project, follow concepts and technologies was reviewed:
 
 # BACK-END
 
-To the back-end was chosen the json-server library to simulate a real api to provide queries of details and products stock. This library provides a full REST api with very usefull personalizations and its database is totally based in a simple json file.
+[See more information](https://github.com/ivanseibel/rocketshoes/tree/master/api).
 
+# WEB APPLICATION
+
+[See more information](https://github.com/ivanseibel/rocketshoes/tree/master/web).
+
+# MOBILE APPLICATION
+
+[See more information](https://github.com/ivanseibel/rocketshoes/tree/master/mobile).
+
+
+# LICENSE
+
+This project is under MIT license. See file [LICENSE](LICENSE) for more details.
