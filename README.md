@@ -31,7 +31,7 @@
   <a href="#license">License</a>
 </p>
 
-# DESCRIPTION
+# Description
 
 This project is one of several builded during GoStack Bootcamp offered by [Rocketseat](http://rocketseat.com.br).
 
@@ -50,19 +50,19 @@ Throughout this project, follow concepts and technologies was reviewed:
 - Integration between Reactotron and Redux-Saga
 - Migration of React from class model to Hooks model
 
-# BACK-END
+# Back-end
 
 [See more information](https://github.com/ivanseibel/rocketshoes/tree/master/api).
 
-# WEB APPLICATION
+# Web application
 
 [See more information](https://github.com/ivanseibel/rocketshoes/tree/master/web).
 
-# MOBILE APPLICATION
+# Mobile application
 
 [See more information](https://github.com/ivanseibel/rocketshoes/tree/master/mobile).
 
 
-# LICENSE
+# License
 
 This project is under MIT license. See file [LICENSE](LICENSE) for more details.
