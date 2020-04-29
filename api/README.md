@@ -36,3 +36,7 @@ The json-server library was chosen to simulate a real api to provide queries of 
 
 - Install json-server globally
 - Run api: npx json-server server.json -p 3333
+
+# License
+
+This project is under MIT license.
