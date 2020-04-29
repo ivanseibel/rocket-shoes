@@ -28,11 +28,11 @@
   <a href="#license">License</a>
 </p>
 
-# DESCRIPTION
+# Description
 
 The json-server library was chosen to simulate a real api to provide queries of details and products stock. This library provides a full REST api with very usefull personalizations and its database is totally based in a simple json file.
 
-# HOW TO RUN
+# Hot to run
 
 - Install json-server globally
 - Run api: npx json-server server.json -p 3333
