@@ -10,8 +10,6 @@
 </h3>
 
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/ivanseibel/rocketshoes/api">
-
   <a href="https://github.com/ivanseibel">
     <img alt="Made by Ivan Seibel" src="https://img.shields.io/badge/Made%20by-Ivan%20Seibel-blue">
   </a>
