@@ -65,4 +65,4 @@ Throughout this project, follow concepts and technologies was reviewed:
 
 # License
 
-This project is under MIT license. See file [LICENSE](LICENSE) for more details.
+This project is under MIT license.
