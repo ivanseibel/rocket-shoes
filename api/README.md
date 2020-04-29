@@ -35,6 +35,9 @@ The [json-server](https://github.com/typicode/json-server) library was chosen to
 - Install json-server globally
 - Run api: npx json-server server.json -p 3333
 
+To run api with your real local ip
+npx json-server --host <YOUR-IP> server.json -p 3333
+
 # License
 
 This project is under MIT license.
