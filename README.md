@@ -3,7 +3,7 @@
 </h1>
 
 <h3 align="center">
-  <img src="https://github.com/ivanseibel/assets/blob/master/img/rocketshoes/logo-purple-342x65.png?raw=true" alt="Rocketshoes logo" style="border-radius: 2px;">
+  <img src="https://github.com/ivanseibel/assets/blob/master/img/rocketshoes/logo-purple-276x36.png?raw=true" alt="Rocketshoes logo" style="border-radius: 2px;">
   <p>
     Project: Rocketshoes - Shoes Web Store
   </p>
