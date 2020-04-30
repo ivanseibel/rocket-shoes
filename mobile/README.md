@@ -52,8 +52,6 @@ During the work of building the app was experimented the follow technologies and
 - Showing friendly material icons with [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 - Beautifying code using eslint + prettier
 
-
-
 # External libraries
 
 -
