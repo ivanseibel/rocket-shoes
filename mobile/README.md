@@ -52,10 +52,6 @@ During the work of building the app was experimented the follow technologies and
 - Showing friendly material icons with [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 - Beautifying code using eslint + prettier
 
-# External libraries
-
--
-
 # How to run
 
 First of all, this project can be executed in both android and iOS devices, but it was not optimized for iOS and maybe you will observe some interface erratic behaviors.
