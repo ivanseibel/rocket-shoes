@@ -16,7 +16,7 @@
 
   <img alt="License" src="https://img.shields.io/github/license/ivanseibel/gostack10-challenge01?color=blue">
 
-  <a href="https://github.com/ivanseibel/gostack10-challenge01/stargazers">
+  <a href="https://github.com/ivanseibel/rocketshoes/stargazers">
     <img alt="Stargazers" src="https://img.shields.io/github/stars/ivanseibel/rocketshoes">
   </a>
 </p>
