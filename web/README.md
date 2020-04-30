@@ -5,7 +5,7 @@
 <h3 align="center">
   <img src="https://github.com/ivanseibel/assets/blob/master/img/rocketshoes/logo-purple-276x36.png?raw=true" alt="Rocketshoes logo" style="border-radius: 2px;">
   <p>
-    Project: Rocketshoes - Mobile
+    Project: Rocketshoes - Web
   </p>
 </h3>
 
@@ -23,7 +23,7 @@
 
 <p align="center">
   <a href="#description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#demo">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#how-to-run">How to run</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#license">License</a>
 </p>
 
@@ -45,18 +45,6 @@ During the work of building the app was experimented the follow technologies and
 - Use of Saga to simplify async operations
 - Debug with Reactotron + Redux + Saga
 - Project migration from class model to hooks model
-- Advanced styles with [styled-components](https://styled-components.com/)
-- HTTP transactions with REST API using [axios](https://github.com/axios/axios)
-- Simplify work with redux states using [immer](https://immerjs.github.io/immer/docs/introduction)
-- Showing friendly warnings with [react-native-flash-message](https://github.com/lucasferreira/react-native-flash-message)
-- Showing friendly material icons with [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)
-- Beautifying code using eslint + prettier
-
-
-
-# External libraries
-
--
 
 # How to run
 
