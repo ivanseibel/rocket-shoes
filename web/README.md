@@ -28,7 +28,7 @@
 </p>
 
 <p align="center">
-<img src="https://github.com/ivanseibel/assets/blob/master/img/rocketshoes/rocketshoes-mobile-demo.gif?raw=true" alt="Rocketshoes Mobile App Demo"
+<img src="https://github.com/ivanseibel/assets/blob/master/img/rocketshoes/rocketshoes-web-demo.gif?raw=true" alt="Rocketshoes Mobile App Demo"
 style="width: 300px;"
 >
 </p>
@@ -36,7 +36,7 @@ style="width: 300px;"
 
 # Description
 
-Very simple mobile application written with React Native that simulates a virtual shoe store, more specifically operations related to navigation on the product display screen, adding and removing products from the shopping cart and updating values and quantities.
+Very simple web application written with ReactJS that simulates a virtual shoe store, more specifically operations related to navigation on the product display screen, adding and removing products from the shopping cart and updating values and quantities.
 
 During the work of building the app was experimented the follow technologies and concepts:
 
@@ -45,19 +45,23 @@ During the work of building the app was experimented the follow technologies and
 - Use of Saga to simplify async operations
 - Debug with Reactotron + Redux + Saga
 - Project migration from class model to hooks model
+- Advanced styles with [styled-components](https://styled-components.com/)
+- HTTP transactions with REST API using [axios](https://github.com/axios/axios)
+- Simplify work with redux states using [immer](https://immerjs.github.io/immer/docs/introduction)
+- Showing friendly warnings with [react-toastify](https://github.com/fkhadra/react-toastify)
+- Showing friendly material icons with [react-icons](https://react-icons.github.io/react-icons/)
+- Beautifying code using eslint + prettier
 
 # How to run
-
-First of all, this project can be executed in both android and iOS devices, but it was not optimized for iOS and maybe you will observe some interface erratic behaviors.
 
 Clone this repository:
 ```
 $ git clone https://github.com/ivanseibel/rocketshoes
 ```
 
-Get inside the new created folder "rocketshoes/mobile"
+Get inside the new created folder "rocketshoes/web"
 ```
-$ cd rocketshoes/mobile
+$ cd rocketshoes/web
 ```
 
 Install all components:
@@ -65,12 +69,12 @@ Install all components:
 $ yarn install
 ```
 
-Run the android app:
+Run the app:
 ```
-$ yarn android
+$ yarn start
 ```
 
-Run json-server at `../api` to put the api online ([see ../api](https://github.com/ivanseibel/rocketshoes/tree/master/api)). If you use a physical mobile device, it's important that you start api with real local ip.
+Run json-server at `../api` to put the api online ([see ../api](https://github.com/ivanseibel/rocketshoes/tree/master/api)).
 
 # License
 
